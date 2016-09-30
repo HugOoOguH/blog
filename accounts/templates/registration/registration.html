@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block titulo%}
+	<h1>Registrate Chavo</h1>
+{%endblock titulo%}
+
+{%block head%}
+
+{%endblock head%}
+
+{%block contenido%}
+	<h4>Nuevo Usuario</h4>
+	<div align="center">
+		<form action="." method="post" accept-charset="utf-8">
+			{%csrf_token%}
+			{{form.as_p}}
+			<input type="submit" value="Registrarse">
+		</form>
+	</div>
+{%endblock contenido%}
+

@@ -1,0 +1,14 @@
+{%extends 'posts/list_view.html'%}
+
+{%block titulo%}
+<h1>Puedes crear un nuevo Post</h1>
+{%endblock titulo%}
+
+{%block contenido%}
+<form action="." method="post" accept-charset="utf-8">
+	{%csrf_token%}
+	{{form.as_p}}
+	<input type="submit" value="Publicar">
+</form>
+<a href="{%url 'posts:post_list'%}"><button type="">Regresar</button></a>
+{%endblock contenido%}

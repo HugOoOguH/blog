@@ -1,0 +1,39 @@
+{%extends 'posts/list_view.html'%}
+
+{%block titulo%}
+	Detalle Post
+{%endblock titulo%}
+
+{%block contenido%}
+<h1>Bienvenido a mi Post</h1>
+	<div align="center">
+		<img src="/media/{{post.image}}" alt="">
+	</div>
+	<h1>{{post.titulo}}</h1>
+	<p>{{post.contenido}}</p>
+	<span>{{post.creado}}</span>
+
+	{%for comentario in comentarios%}
+		<li>
+			<span>{{comentario.autor}}</span>
+			<p>
+				{{comentario.cuerpo}}
+			</p>
+			<p>{{comentario.fecha}}</p>
+		</li>
+	{%empty%}
+		<h2>Aun no hay comentarios</h2>
+	{%endfor%}	
+
+	<br><br>
+	
+	<form action="." method="post" accept-charset="utf-8">
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="Submit" value="Comentar">
+	</form>
+
+	<a href="{%url 'posts:post_list'%}">Volver atras</a>	
+
+{%endblock contenido%}
+

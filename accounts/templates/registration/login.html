@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+	Bienvenido a nuestro sitio Web
+{% endblock titulo %}
+
+{% block contenido %}
+	<div align="center">
+		<h3>Inicia Sesión Ahora</h3>
+	</div>
+	{% if form.errors %}
+		<p>Tu usuario y contraseña no concuerdan, Intentalo nuevamente</p>	
+	{% else %}
+		<p>Ingresa con tu nombre de usuario y contraseña</p>
+	{% endif %}
+	<form action="{%url 'accounts:login'%}" method="post" accept-charset="utf-8">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="hidden" name="next" value="{{next}}">
+		<input type="submit" name="" value="Iniciar Sesión">
+	</form>
+	<br><br>
+	<div align="center">
+		<p>Puedes loguearte con tu cuenta de facebook</p>
+		<a href="{% url 'social:begin' 'facebook' %}"><button type="">Aquí</button></a>
+		<br>
+		<br>
+		<br>
+		<p>Si aun no tienes una cuenta registrate <a href="{%url 'accounts:registro'%}">Aquí</a></p>
+	</div>
+{% endblock contenido %}
