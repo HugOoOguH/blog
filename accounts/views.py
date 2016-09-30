@@ -54,4 +54,6 @@ class Dashboard(View):
 			}
 			return render(request, template_name, context)
 
+class NewClass(View):
+	pass
 
